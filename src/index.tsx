@@ -5,9 +5,13 @@ import useData from './useData'
 export default () => {
   const data = useData()
 
+  React.useEffect(() => {
+    data.append()
+  }, [])
+
   return (
     <SafeAreaView style={styles.scroll}>
-      <ScrollView style={styles.scroll} maintainVisibleContentPosition={{ minIndexForVisible: 0 }}>
+      <ScrollView style={styles.scroll} maintainVisibleContentPosition={{ minIndexForVisible: 1 }}>
         {data.data.map((item, index) => (
           <View style={{ backgroundColor: item.color, height: item.size }} key={index}>
             <Text>{item.key}</Text>
